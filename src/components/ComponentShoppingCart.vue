@@ -14,14 +14,15 @@ export default {
     return {}
   },
   methods: {
-    ...mapActions(['checkout']),
+    ...mapActions('cart', ['checkout']),
   },
 
   computed: {
-    ...mapGetters({
+    ...mapGetters('cart', {
       products: 'cartProducts',
       total: 'cartTotal',
     }),
+
     // replaced by mapGetters
     // products() {
     //   return this.$store.getters.cartProducts
@@ -29,8 +30,8 @@ export default {
     // total() {
     //   return this.$store.getters.cartTotal
     // },
-    ...mapState({
-      checkoutStatus: 'checkoutStatus',
+    ...mapState('cart', {
+      checkoutStatus: (state) => state.checkoutStatus,
     }),
   },
   props: {},
